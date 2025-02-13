@@ -32,7 +32,6 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        // Check if the authenticated user is the author of the post
         if (Auth::id() !== $post->author) {
             return redirect()->route('postdashboard')->with('error', 'Unauthorized action.');
         }
@@ -51,7 +50,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if (Auth::id() !== $post->id) {
+        if (Auth::id() === $post->id) {
             return redirect()->route('postdashboard')->with('error', 'Unauthorized action.');
         }
         

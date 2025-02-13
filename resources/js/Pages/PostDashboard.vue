@@ -11,12 +11,14 @@ const user = computed(
     () => page.props.auth.user || { id: null, name: "Guest" }
 );
 const posts = computed(() => page.props.posts || []);
+
 const searchQuery = ref("");
 const filteredPosts = computed(() => {
     return posts.value.filter((post) =>
         post.title.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
 });
+
 const isModalOpen = ref(false);
 const isViewing = ref(false);
 const isEditing = ref(false);
@@ -65,7 +67,7 @@ const submitPost = () => {
             },
         });
     } else {
-        router.post(route("posts.store"), post.value, {
+        router.post(router("posts.store"), post.value, {
             onSuccess: () => {
                 isModalOpen.value = false;
             },
@@ -75,7 +77,7 @@ const submitPost = () => {
 
 const deletePost = (id) => {
     if (confirm("Are you sure you want to delete this post?")) {
-        router.delete(router("posts.destroy", id));
+        router.delete(route("posts.destroy", id));
     }
 };
 </script>
