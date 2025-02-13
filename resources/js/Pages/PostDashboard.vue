@@ -67,7 +67,7 @@ const submitPost = () => {
             },
         });
     } else {
-        router.post(router("posts.store"), post.value, {
+        router.post(route("posts.store"), post.value, {
             onSuccess: () => {
                 isModalOpen.value = false;
             },
