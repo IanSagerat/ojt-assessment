@@ -9,7 +9,7 @@
 
 ## INSTALLATION
 
-### Step 1
+### STEP 1
 
 ## Prerequisites
 
